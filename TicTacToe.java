@@ -158,7 +158,7 @@ public class TicTacToe {
             System.out.println(user2 + " wins!");
             if(playAgain()){
                 for(int i = 0; i<this.board.length; i++){
-                    this.board[i] = String.valueOf(i);
+                    this.board[i] = String.valueOf(i+1);
                 }
             }else{
                 System.out.println("Qutting game....");
