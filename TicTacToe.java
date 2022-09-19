@@ -1,4 +1,5 @@
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -12,22 +13,32 @@ public class TicTacToe {
         this.user1 = user1;
         this.user2 = user2;
     }
-
     //Startar TicTacToe spelet.
     public void Game(){
         System.out.println("Welcome to TicTacToe!" + "\n");
         System.out.println(this.user1 + " Will play as 'X'" + " and " + this.user2 + " will play as 'O'");
         printBoard(board);
+        int x = randomStart();
+        System.out.println(x);
         while(gameOn){
-            generateMove();
-            generateMoveOpponent();
-        }
+            if(x == 0){
+                generateMove();
+                generateMoveOpponent();
+            }else{
+                generateMoveOpponent();
+                generateMove();
+            }
 
+        }
     }
 
+    //Slumpar vem som ska börja.
+    private int randomStart(){
+        Random r = new Random();
+        return r.nextInt(0,2);
+    }
 
     private void gameOver() {
-
         //user1
         //Sidleds
         if(this.board[1-1].equals("X") && this.board[2-1].equals("X") && this.board[3-1].equals("X")){
@@ -40,9 +51,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Sidleds
         if(this.board[4-1].equals("X") && this.board[5-1].equals("X") && this.board[6-1].equals("X")){
@@ -50,14 +61,13 @@ public class TicTacToe {
             if(playAgain()){
                 for(int i = 0; i<this.board.length; i++){
                     this.board[i] = String.valueOf(i+1);
-
                 }
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Sidleds
         if(this.board[7-1].equals("X") && this.board[8-1].equals("X") && this.board[9-1].equals("X")){
@@ -70,9 +80,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Uppifrån
         if(this.board[1-1].equals("X") && this.board[4-1].equals("X") && this.board[7-1].equals("X")){
@@ -80,14 +90,13 @@ public class TicTacToe {
             if(playAgain()){
                 for(int i = 0; i<this.board.length; i++){
                     this.board[i] = String.valueOf(i+1);
-
                 }
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //uppifrån
         if(this.board[2-1].equals("X") && this.board[5-1].equals("X") && this.board[8-1].equals("X")){
@@ -95,14 +104,13 @@ public class TicTacToe {
             if(playAgain()){
                 for(int i = 0; i<this.board.length; i++){
                     this.board[i] = String.valueOf(i+1);
-
                 }
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //uppifrån
         if(this.board[3-1].equals("X") && this.board[6-1].equals("X") && this.board[9-1].equals("X")){
@@ -115,9 +123,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Diagonal
         if(this.board[1-1].equals("X") && this.board[5-1].equals("X") && this.board[9-1].equals("X")){
@@ -130,9 +138,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Diagonal
         if(this.board[3-1].equals("X") && this.board[5-1].equals("X") && this.board[7-1].equals("X")){
@@ -145,9 +153,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
 
         //-------------------------------------------------------------------------------------------
@@ -162,9 +170,9 @@ public class TicTacToe {
                 }
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Sidleds
         if(this.board[4-1].equals("O") && this.board[5-1].equals("O") && this.board[6-1].equals("O")){
@@ -177,9 +185,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Sidleds
         if(this.board[7-1].equals("O") && this.board[8-1].equals("O") && this.board[9-1].equals("O")){
@@ -192,9 +200,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Uppifrån
         if(this.board[1-1].equals("O") && this.board[4-1].equals("O") && this.board[7-1].equals("O")){
@@ -207,9 +215,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //uppifrån
         if(this.board[2-1].equals("O") && this.board[5-1].equals("O") && this.board[8-1].equals("O")){
@@ -222,9 +230,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //uppifrån
         if(this.board[3-1].equals("O") && this.board[6-1].equals("O") && this.board[9-1].equals("O")){
@@ -237,9 +245,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Diagonal
         if(this.board[1-1].equals("O") && this.board[5-1].equals("O") && this.board[9-1].equals("O")){
@@ -252,9 +260,9 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
-
         }
         //Diagonal
         if(this.board[3-1].equals("O") && this.board[5-1].equals("O") && this.board[7-1].equals("O")){
@@ -267,12 +275,11 @@ public class TicTacToe {
                 printBoard(board);
             }else{
                 System.out.println("Qutting game....");
+                System.exit(1);
                 this.gameOn = false;
             }
 
         }
-
-
     }
 
     //Kollar ifall det har blivit lika genom att räkna ut hur många X och O som finns ute på brädan.
@@ -317,10 +324,8 @@ public class TicTacToe {
         switch (ans){
             case "Y":
                 return true;
-
             case "N":
                 return false;
-
         }
         return false;
     }
@@ -363,10 +368,9 @@ public class TicTacToe {
                     System.out.println();
                     System.out.println("---------");
                     break;
-
-            }
                 }
-                     }
+                    }
+                         }
 
     //Spelare 1 kör sitt drag.
     public void generateMove(){
@@ -378,7 +382,6 @@ public class TicTacToe {
             if(playAgain()){
                 for(int i = 0; i<this.board.length; i++){
                     this.board[i] = String.valueOf(i+1);
-
                 }
                 printBoard(board);
             }else{
@@ -412,7 +415,6 @@ public class TicTacToe {
             if(playAgain()){
                 for(int i = 0; i<this.board.length; i++){
                     this.board[i] = String.valueOf(i+1);
-
                 }
                 printBoard(board);
             }else{
@@ -441,12 +443,10 @@ public class TicTacToe {
                 System.out.println("Invalid move");
                 return false;
             }
-
-
                 return true;
             }
-
     }
+
 
 
 
